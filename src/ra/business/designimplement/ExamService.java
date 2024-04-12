@@ -43,6 +43,16 @@ public class ExamService {
             count++;
         }
     }
+    public static void displayExamDetail(){
+        displayExamListOfUser();
+        System.out.println("mời bạn nhập váo id đề thi muốn xem");
+        byte choiceId = InputMethods.getByte();
+        if (examList.stream().anyMatch(exam -> exam.getExamId()==choiceId)){
+            examList.stream().filter(exam -> exam.getExamId()==choiceId).findFirst().orElse(null).displayDataForTeach();
+        }else {
+            System.out.println("mã đề bạn nhập không tồn tại");
+        }
+    }
 
     public static void deleteExam() {
 
@@ -53,13 +63,15 @@ public class ExamService {
             System.out.println("lựa chọn của bạn nằm ngoài phạm vi");
         } else {
             examList.remove(findById(id));
+            IO_file.writeObjFromFile(examList, IO_file.EXAM_PATH);
             System.out.println("xóa thành công");
         }
+
     }
 
     public static void updateStatusExam() {
         displayExamListOfUser();
-        System.out.println("Mời bạn nhập vào ID đề muốn sửa");
+        System.out.println("Mời bạn nhập vào ID đề muốn sửa trạng thái");
         int id = InputMethods.getInteger();
         if (findById(id) == null) {
             System.out.println("lựa chọn của bạn nằm ngoài phạm vi");
@@ -67,6 +79,7 @@ public class ExamService {
             System.out.println("mời bạn nhập vào trạng thái mới(true=open|false=blook)");
             boolean newStatus = InputMethods.getBoolean();
             findById(id).setStatus(newStatus);
+            IO_file.writeObjFromFile(examList, IO_file.EXAM_PATH);
             System.out.println("thay đổi thành công");
         }
     }
@@ -126,7 +139,12 @@ public class ExamService {
                         findById(id).setStatus(newStatus);
                         System.out.println("thay đổi thành công");
                         break;
+                    case 7:
+                        QuestionService.deleteQuestion(findById(id).getListQuestion());
+                        break;
                     case 0:
+                        IO_file.writeObjFromFile(examList, IO_file.EXAM_PATH);
+                        System.out.println("up date thành công");
                         isExit = false;
                         break;
                     default:

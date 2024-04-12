@@ -5,41 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18515ca1-f9bb-4cb7-a3ee-4e53cdb7c36e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jbcrypt_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_Quizz.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/config/Enum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/config/IO_file.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/config/InputMethods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/design/IAuthentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/designimplement/AdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/designimplement/AuthenticationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/designimplement/CatalogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/designimplement/ExamService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/designimplement/QuestionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/designimplement/ResultService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/designimplement/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/entity/Catalogs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/entity/Exam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/entity/Question.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/entity/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/entity/ResultDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/business/entity/Users.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/data/CurrentUser.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/data/Exam.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/data/Users.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/run/Management.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/run/adminmenu/AdminManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/run/adminmenu/UserManage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/run/teachmenu/ExamManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/run/teachmenu/TeachManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/run/usermenu/UserInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/run/usermenu/UserManagement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ra/data/Catalogs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ra/data/Resul.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ra/data/ResulDetail.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ra/run/adminmenu/ReportManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/config/IO_file.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/config/IO_file.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/CatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/CatalogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/ExamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/ExamService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/ResultService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Exam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Exam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/CurrentUser.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/CurrentUser.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/Exam.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/Exam.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/Users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/Users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/run/Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/Management.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/run/adminmenu/AdminManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/adminmenu/AdminManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/run/adminmenu/UserManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/adminmenu/UserManage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/run/teachmenu/ExamManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/teachmenu/ExamManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/run/teachmenu/TeachManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/teachmenu/TeachManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/run/usermenu/UserInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/usermenu/UserInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/run/usermenu/UserManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/usermenu/UserManagement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,10 +65,11 @@
     &quot;Application.ResultDetail.executor&quot;: &quot;Run&quot;,
     &quot;Application.UserManage.executor&quot;: &quot;Run&quot;,
     &quot;Application.Users.executor&quot;: &quot;Run&quot;,
+    &quot;Application.test.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/chjck/Downloads/jbcrypt-0.4.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -100,6 +91,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ra.business.designimplement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Management" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ra.run.Management" />
+      <module name="project_Quizz" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ra.run.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,8 +137,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ra.run.test" />
+      <module name="project_Quizz" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ra.run.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.Management" />
         <item itemvalue="Application.Exam" />
         <item itemvalue="Application.Question" />
         <item itemvalue="Application.Users" />
@@ -165,6 +184,9 @@
       <workItem from="1712667765561" duration="430000" />
       <workItem from="1712710425559" duration="29516000" />
       <workItem from="1712754230397" duration="598000" />
+      <workItem from="1712826535639" duration="612000" />
+      <workItem from="1712883055642" duration="33873000" />
+      <workItem from="1712929861389" duration="510000" />
     </task>
     <servers />
   </component>

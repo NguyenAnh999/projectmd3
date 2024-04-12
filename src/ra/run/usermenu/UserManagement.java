@@ -11,13 +11,22 @@ public class UserManagement {
     public static void userMenu() {
         boolean isExit =true;
         do{
-            System.out.println("----------------Chào Mừng học viên "+currentUserList.get(0).getFullName()+"--------------------");
-            System.out.println("1: Chọn đề thi");
-            System.out.println("2: Thông tin cá nhân");
-            System.out.println("3: tìm đề theo tên");
-            System.out.println("4: tìm đề theo danh mục");
-            System.out.println("0: đăng xuất");
-            System.out.println("Mời bạn chọn (1|2|3)");
+            String currentUserFullName = currentUserList.get(0).getFullName();
+            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ +");
+            System.out.printf("┃          Chào Mừng học viên %-50s ┃\n",currentUserFullName);
+            System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+            System.out.println("┃                              1: Chọn đề thi                                    ┃");
+            System.out.println("┃--------------------------------------------------------------------------------┃");
+            System.out.println("┃                           2: Thông tin cá nhân                                 ┃");
+            System.out.println("┃--------------------------------------------------------------------------------┃");
+            System.out.println("┃                            3: Tìm đề theo tên                                  ┃");
+            System.out.println("┃--------------------------------------------------------------------------------┃");
+            System.out.println("┃                          4: Tìm đề theo danh mục                               ┃");
+            System.out.println("┃--------------------------------------------------------------------------------┃");
+            System.out.println("┃                               0: Đăng xuất                                     ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛+");
+            System.out.println("Mời bạn chọn");
+
             byte choice = InputMethods.getByte();
             switch (choice){
                 case 1:

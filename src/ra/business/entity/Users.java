@@ -3,6 +3,7 @@ package ra.business.entity;
 import org.mindrot.jbcrypt.BCrypt;
 import ra.business.config.Enum;
 import ra.business.config.InputMethods;
+import ra.business.designimplement.AdminService;
 
 import java.io.Serializable;
 import java.util.Comparator;
@@ -175,6 +176,7 @@ public void displayData(){
         while (true) {
             System.out.println("1: học viên");
             System.out.println("2: người ra đề");
+            System.out.println("3: Admin");
             System.out.print("Mời bạn chọn :");
             byte choice = InputMethods.getByte();
             switch (choice) {
@@ -182,12 +184,24 @@ public void displayData(){
                     return Enum.ROLE_USER;
                 case 2:
                     return Enum.ROLE_TEACH;
+                case 3:
+                  return isAdmin();
                 default:
                     System.out.println("lựa chọn không chính xác,mời chọn lại");
             }
         }
     }
-
+private Enum isAdmin(){
+    System.out.println("mời bạn nhập vào mã code để tạo tài khoản Admin");
+    int adminCode=InputMethods.getInteger();
+    if (adminCode==AdminService.ADMIN_CODE) {
+        return Enum.ROLE_ADMIN;
+    }else {
+        System.err.println("MÃ không đúng YÊU CẦU KHÔNG TRUY CẬP TRÁI PHÉP !!");
+        System.exit(0);
+        return null;
+    }
+}
     public String getInputAddress() {
         System.out.println("mời bạn nhập vào địa chỉ:");
         return InputMethods.getString();

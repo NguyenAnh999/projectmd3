@@ -8,6 +8,9 @@ public class IO_file {
     public final static String USER_PATH = "C:\\JavaCodeOff\\project_Quizz\\src\\ra\\data\\Users.txt";
     public final static String CURRENT_USER_PATH = "C:\\JavaCodeOff\\project_Quizz\\src\\ra\\data\\CurrentUser.txt";
     public final static String EXAM_PATH ="C:\\JavaCodeOff\\project_Quizz\\src\\ra\\data\\Exam.txt";
+    public final static String CATALOGS_PATH ="C:\\JavaCodeOff\\project_Quizz\\src\\ra\\data\\Catalogs.txt";
+    public final static String RESUL_PATH ="C:\\JavaCodeOff\\project_Quizz\\src\\ra\\data\\Resul.txt";
+    public final static String RESUL_DETAIL_PATH ="C:\\JavaCodeOff\\project_Quizz\\src\\ra\\data\\ResulDetail.txt";
 
     public static <T> List<T> readObjFromFile(String PATH) {
         FileInputStream fis = null;

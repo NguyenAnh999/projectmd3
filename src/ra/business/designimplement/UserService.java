@@ -17,40 +17,53 @@ public class UserService {
     public static void displayExamList() {
         int count = 1;
         for (Exam exam : examList) {
-            System.out.println("============Đê thi số: " + count + "================");
-            System.out.printf("mã đề: %s  | Đề thi: %s | trạng thái: %s", exam.getExamId(), exam.getTitle(), exam.isStatus() ? "open" : "blook");
+            System.out.println("-----------------Đê thi số: " + count + "-------------------------");
+            System.out.printf("mã đề: %s  | Đề thi: %s | trạng thái: %s\n", exam.getExamId(), exam.getTitle(), exam.isStatus() ? "open" : "blook");
             System.out.println("==============================================================================");
             count++;
         }
     }
 
     public static void takeAnExam() {
-        displayExamList();
-        System.out.println("mời bạn chọn đề theo số");
-        int choice = InputMethods.getInteger();
-        examList.get(choice - 1).displayDataForUser();
-        System.out.println("============================== Bắt đầu thi ====================================");
-        Result result = new Result();
-        result.inputData(examList.get(choice - 1).getExamId());
-        takeAnExamDetail(choice, result.getResultId(), result);
-        resultList.add(result);
-        System.out.println("kết thúc bài thi, bạn có thể xem lại điểm của mình trong phần quản lý");
+        if (examList.isEmpty()) {
+            System.out.println("hiện tại chưa có đề nào mời bạn quay lại sau");
+        } else {
+            displayExamList();
+            System.out.println("mời bạn chọn đề theo số");
+            int choice = InputMethods.getInteger();
+            examList.get(choice - 1).displayDataForUser();
+            System.out.println("============================== Bắt đầu thi ====================================");
+            Result result = new Result();
+            result.inputData(examList.get(choice - 1).getExamId());
+            takeAnExamDetail(choice, result.getResultId(), result);
+            result.setTotalPoint(
+                    examList.get(choice - 1).getListQuestion().size() / 100 * result.getTotalPoint()
+            );
+            resultList.add(result);
+            IO_file.writeObjFromFile(resultList, IO_file.RESUL_PATH);
+            System.out.println("kết thúc bài thi, bạn có thể xem lại điểm của mình trong phần quản lý");
+        }
     }
-
     public static void takeAnExamDetail(int choice, int resultId, Result result) {
         for (int i = 0; i < examList.get(choice - 1).getListQuestion().size(); i++) {
+
             System.out.print("Câu " + (1 + i) + " :");
+
             examList.get(choice - 1).getListQuestion().get(i).displayData();
-            System.out.println("mời bạn chọn đáp án (1-" + examList.get(choice - 1).getListQuestion().size() + ")");
-            int choiceIndexAnswer = choiceAnswer(examList.get(choice - 1).getListQuestion().size());
+            System.out.println("mời bạn chọn đáp án (1-" + examList.get(choice - 1).getListQuestion().get(i).getAnswerOption().size() + ")");
+
+            int choiceIndexAnswer = choiceAnswer(examList.get(choice - 1).getListQuestion().get(i).getAnswerOption().size());
+
             int trueIndexAnswer = examList.get(choice - 1).getListQuestion().get(i).getAnswerTrue();
+
             boolean checkAnswer = false;
             if (trueIndexAnswer == choiceIndexAnswer) {
                 checkAnswer = true;
-                result.setTotalPoint(result.getTotalPoint() + 10);
+                result.setTotalPoint(result.getTotalPoint() + 1);
             }
             ResultDetail resultDetail = new ResultDetail(resultId, i, choiceIndexAnswer, checkAnswer);
             resultDetailList.add(resultDetail);
+            IO_file.writeObjFromFile(resultDetailList,IO_file.RESUL_DETAIL_PATH);
             System.out.println("\n=================================================================================================\n");
         }
     }
@@ -69,12 +82,16 @@ public class UserService {
     }
 
     public static void finExamByName() {
+        if (examList.isEmpty()){
+            System.out.println("hiện tại chưa có đề thi nào");
+        }{
         System.out.println("mời bạn nhập vào tên đề thi muốn tìm");
         String examName = InputMethods.getString();
         if (examList.stream().anyMatch(exam -> exam.getTitle().contains(examName))) {
             examList.stream().filter(exam -> exam.getTitle().contains(examName)).forEach(UserService::displayExamListOfUser);
         } else {
             System.out.println("không tìm thấy đề nào như bạn đã tìm");
+        }
         }
     }
 
@@ -143,6 +160,7 @@ public class UserService {
                     finByID(updateID).setAddress(finByID(updateID).getInputAddress());
                     break;
                 case 0:
+                    IO_file.writeObjFromFile(userList,IO_file.USER_PATH);
                     isExit = false;
                     break;
                 default:

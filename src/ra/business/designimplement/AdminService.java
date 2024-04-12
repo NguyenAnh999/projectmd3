@@ -1,5 +1,6 @@
 package ra.business.designimplement;
 
+import ra.business.config.IO_file;
 import ra.business.config.InputMethods;
 import ra.business.entity.Users;
 
@@ -12,6 +13,8 @@ import static ra.business.config.Enum.ROLE_USER;
 import static ra.business.designimplement.AuthenticationService.userList;
 
 public class AdminService {
+    public static final int ADMIN_CODE = 123456789;
+
     public static void setStatusForUser() {
         int cont = 1;
         for (Users users : userList) {
@@ -27,15 +30,17 @@ public class AdminService {
             if (updateStatusID > userList.size()) {
                 System.out.println("lựa chọn không chính xác");
             } else {
-               if (userList.get(updateStatusID-1).isStatus()){
-                   userList.get(updateStatusID-1).setStatus(false);
-                   System.out.println("bạn đã khóa tài khoản của " +userList.get(updateStatusID-1).getFullName()+" thành công ");
-                   break;
-               }else {
-                       userList.get(updateStatusID-1).setStatus(true);
-                       System.out.println("bạn đã mở khóa tài khoản của " +userList.get(updateStatusID-1).getFullName()+" thành công ");
-                       break;
-               }
+                if (userList.get(updateStatusID - 1).isStatus()) {
+                    userList.get(updateStatusID - 1).setStatus(false);
+                    IO_file.writeObjFromFile(userList, IO_file.USER_PATH);
+                    System.out.println("bạn đã khóa tài khoản của " + userList.get(updateStatusID - 1).getFullName() + " thành công ");
+                    break;
+                } else {
+                    userList.get(updateStatusID - 1).setStatus(true);
+                    System.out.println("bạn đã mở khóa tài khoản của " + userList.get(updateStatusID - 1).getFullName() + " thành công ");
+                    IO_file.writeObjFromFile(userList, IO_file.USER_PATH);
+                    break;
+                }
             }
         }
     }
@@ -44,9 +49,9 @@ public class AdminService {
         userList.forEach(Users::displayData);
     }
 
-public static void searchByName(){
-    System.out.println("Mời bạn nhập vào tên người dùng muốn tìm kiếm");
-    String userName=InputMethods.getString();
-    userList.stream().filter(users -> users.getFullName().contains(userName)).forEach(Users::displayData);
-}
+    public static void searchByName() {
+        System.out.println("Mời bạn nhập vào tên người dùng muốn tìm kiếm");
+        String userName = InputMethods.getString();
+        userList.stream().filter(users -> users.getFullName().contains(userName)).forEach(Users::displayData);
+    }
 }

@@ -85,9 +85,9 @@ public class Result {
         String getUserName=userList.stream().filter(users -> users.getUserId()==this.userId).findFirst().orElse(null).getUserName();
         String getExamName=examList.stream().filter(exam -> exam.getExamId()==this.examId).findFirst().orElse(null).getTitle();
         String date = this.createdDate.toString();
-        System.out.println("Đề:  "+getExamName);
-        System.out.println("Người thi:" +getUserName);
-        System.out.println("Điểm: " +this.totalPoint);
-        System.out.println("ngày thi: "+date);
+        System.out.println("| Đề:  "+getExamName);
+        System.out.println("| Người thi:" +getUserName);
+        System.out.println("| Điểm: " +this.totalPoint);
+        System.out.println("| Ngày thi: "+date);
     }
 }

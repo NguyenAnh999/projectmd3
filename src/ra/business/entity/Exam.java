@@ -250,6 +250,7 @@ public class Exam implements Serializable {
         for (int i = 0; i < this.listQuestion.size(); i++) {
             System.out.print("Câu " + (1 + i) + " :");
             this.listQuestion.get(i).displayData();
+            System.out.println("đáp án đúng là câu thứ: "+this.listQuestion.get(i).getAnswerTrue());
             System.out.println("\n=================================================================================================\n");
         }
     }
@@ -268,4 +269,13 @@ public class Exam implements Serializable {
                 .map(catalogs -> catalogsList.stream().filter(catalogs1 -> catalogs1.getCatalogId().equals(catalogs))
                         .findFirst().orElse(null).getCatalogName()).toList();
     }
+//    public void displayDataExamList() {
+//        System.out.println("----------------------------------------"+this.title+"-------------------------------------------------------------");
+//        for (int i = 0; i < this.listQuestion.size(); i++) {
+//            System.out.print("Câu " + (1 + i) + " :");
+//            this.listQuestion.get(i).displayData();
+//            System.out.println("đáp án đúng là câu: "+this.listQuestion.get(i).getAnswerTrue());
+//            System.out.println("\n=================================================================================================\n");
+//        }
+//    }
 }

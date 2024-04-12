@@ -31,13 +31,13 @@ public class QuestionService {
         }
     }
 
-    public static void addNewQuestion(List<Question> questionList) {
-        Question question = new Question();
-        question.inputData(questionList);
-        questionList.add(question);
-    }
-
-    public static void deleteQestion(List<Question> questionList) {
+//    public static void addNewQuestion(List<Question> questionList) {
+//        Question question = new Question();
+//        question.inputData(questionList);
+//        questionList.add(question);
+//    }
+//
+    public static void deleteQuestion(List<Question> questionList) {
         displayQuestionList(questionList);
         System.out.println("Mời bạn nhập vào số thứ tự câu hỏi muốn xóa");
         int choice = InputMethods.getInteger();

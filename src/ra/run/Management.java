@@ -21,12 +21,12 @@ public class Management {
             }
         }
         do {
-            System.out.println("----------------MENU--------------------");
-            System.out.println("1: đăng ký");
-            System.out.println("2: đăng nhập");
-            System.out.println("3: quên mật khẩu");
-            System.out.println("0: thoát");
-            System.out.println("Mời bạn chọn (1|2|3)");
+            System.out.println("┏━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("┃ 1: đăng ký       ┃ 2: đăng nhập     ┃");
+            System.out.println("┣━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━┫");
+            System.out.println("┃ 3: quên mật khẩu ┃ 0: thoát         ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━┛");
+            System.out.println("Mời bạn chọn");
             byte choice = InputMethods.getByte();
             switch (choice) {
                 case 1:

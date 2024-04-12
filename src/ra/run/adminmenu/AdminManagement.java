@@ -11,18 +11,26 @@ public class AdminManagement {
     public static void adminMenu() {
         boolean isExit = true;
         do {
-            System.out.println("----------------Chào Mừng Admin "+currentUserList.get(0).getFullName()+"--------------------");
-            System.out.println("1: Quan ly người dùng");
-            System.out.println("2: báo cáo thống kê");
-            System.out.println("3: đăng xuất");
-            System.out.println("Mời bạn chọn (1|2|3)");
+            String currentUserName=currentUserList.get(0).getFullName();
+            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ");
+             System.out.printf("┃                       Chào Mừng Admin %-40s ┃\n",currentUserName);
+            System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+            System.out.println("┃                           1: Quan ly người dùng                                ┃");
+            System.out.println("┃--------------------------------------------------------------------------------┃");
+            System.out.println("┃                            2: báo cáo thống kê                                 ┃");
+            System.out.println("┃--------------------------------------------------------------------------------┃");
+            System.out.println("┃                              3: đăng xuất                                      ┃");
+            System.out.println("┃--------------------------------------------------------------------------------┃");
+            System.out.println("┃                               0: quay lại                                      ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            System.out.println("Mời bạn chọn");
             byte choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
                     UserManage.userControlMenu();
                     break;
                 case 2:
-
+                    ReportManagement.ReportManageMenu();
                     break;
                 case 3:
                     currentUserList.clear();
