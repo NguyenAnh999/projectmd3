@@ -17,19 +17,19 @@ public class ExamManagement {
             System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ +");
              System.out.printf("┃         Chào Mừng giáo viên %-50s ┃\n",currentUserName);
             System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-            System.out.println("┃                              1:Thêm đề thi                                     ┃");
+            System.out.println("┃                              1: Thêm đề thi                                    ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                           2:  khóa/mở đề thi                                   ┃");
+            System.out.println("┃                              2: Khóa/mở đề thi                                 ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                              3: sửa đề thi                                     ┃");
+            System.out.println("┃                              3: Sửa đề thi                                     ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                              4: xóa đề thi                                     ┃");
+            System.out.println("┃                              4: Xóa đề thi                                     ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                      5: Thông kê kết quả người dự thi                          ┃");
+            System.out.println("┃                              5: Thông kê kết quả người dự thi                  ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                          6: xem tri tiết đề thi                                ┃");
+            System.out.println("┃                              6: Xem tri tiết đề thi                            ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                              0: quay lại                                       ┃");
+            System.out.println("┃                              0: Quay lại                                       ┃");
             System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             System.out.println("Mời bạn chọn");
 
@@ -49,7 +49,7 @@ public class ExamManagement {
                     ExamService.deleteExam();
                     break;
                 case 5:
-                    ResultService.userPointList();
+                    ResultService.userPointList(false);
                     break;
                 case 6:
                     ExamService.displayExamDetail();

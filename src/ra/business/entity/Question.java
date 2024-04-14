@@ -65,14 +65,14 @@ public class Question implements Serializable {
     }
 
     public void displayData() {
-        System.out.println(this.questionContent);
+        System.out.printf("%-92s┃\n",this.questionContent);
         for (int i = 0; i < answerOption.size(); i++) {
-            System.out.print("đáp án "+(i+1)+": "+answerOption.get(i));
-            System.out.println();
+            String answer = answerOption.get(i);
+            System.out.printf("┃ Đáp án "+(i+1)+": %-89s┃\n",answer);
         }
     }
 
-    private byte getInputAnswerTrue(List<String> list) {
+    public byte getInputAnswerTrue(List<String> list) {
         System.out.println("mời bạn nhập vào vị trí câu trả lời đúng (câu thứ mấy?)");
         while (true) {
             byte trueAnswer = InputMethods.getByte();

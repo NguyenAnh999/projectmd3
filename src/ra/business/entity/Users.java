@@ -151,9 +151,23 @@ public class Users implements Serializable {
     }
 public void displayData(){
         String roleStr = this.role==Enum.ROLE_USER?"thí sinh":(this.role==Enum.ROLE_TEACH?"giáo viên":"Admin");
-    System.out.printf("| ID: %-3d | Tên: %-6s | Quyền: %-10s | Trạng thái: %-5s |",this.userId,this.fullName,roleStr,(this.status?"open":"blook"));
-    System.out.println("\n=============================================================================");
+    System.out.println("┏━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+    System.out.printf("┃ ID: %-3d ┃ Tên: %-10s ┃ Quyền: %-10s ┃ Trạng thái: %-22s ┃",this.userId,this.fullName,roleStr,(this.status?"open":"blook"));
+    System.out.println("\n┗━━━━━━━━━┻━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 }
+    public void displayDataAll() {
+        System.out.printf("%-15s|%-15s%n", "trường", "nội dung");
+        System.out.println("----------------------------------------");
+        System.out.printf("%-15s|%-15s%n", "ID", userId);
+        System.out.printf("%-15s|%-15s%n", "Họ và tên", fullName);
+        System.out.printf("%-15s|%-15s%n", "Tài khoản", userName);
+        System.out.printf("%-15s|%-15s%n", "mật khẩu", password);
+        System.out.printf("%-15s|%-15s%n", "Email", email);
+        System.out.printf("%-15s|%-15s%n", "Số điện thoại", phoneNumber);
+        System.out.printf("%-15s|%-15s%n", "Địa chỉ", address);
+        System.out.printf("%-15s|%-15s%n", "quyền", role);
+        System.out.printf("%-15s|%-15s%n", "trạng thái",  status?"open":"blook");
+    }
 
     public void inputData() {
         this.userId = getNewId();
@@ -285,16 +299,16 @@ private Enum isAdmin(){
     }
 
     public String getInputLastName() {
-        System.out.println("mời bạn nhập họ:");
-        return InputMethods.getString();
-    }
-
-    public String getInputFistName() {
         System.out.println("mời bạn nhập tên:");
         return InputMethods.getString();
     }
 
-    private String getInputFullName() {
+    public String getInputFistName() {
+        System.out.println("mời bạn nhập họ:");
+        return InputMethods.getString();
+    }
+
+    public String getInputFullName() {
         return this.firstName + " " + this.lastName;
     }
 

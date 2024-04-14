@@ -12,21 +12,21 @@ public class UserInformation {
         boolean isExit =true;
         do{
             System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-            System.out.println("┃                               THÔNG TIN CÁ NHÂN                                ┃");
+            System.out.println("┃                            ❤    THÔNG TIN CÁ NHÂN    ❤                        ┃");
             System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-            System.out.println("┃                         1: hiển thị thông tin cá nhân                          ┃");
+            System.out.println("┃                         1: Hiển thị thông tin cá nhân                          ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                         2: chỉnh sửa thông tin cá nhân                         ┃");
+            System.out.println("┃                         2: Chỉnh sửa thông tin cá nhân                         ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                              3: đổi mật khẩu                                   ┃");
+            System.out.println("┃                         3: Đổi mật khẩu                                        ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                                0: quay lại                                     ┃");
-            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛+");
+            System.out.println("┃                         0: Quay lại                                            ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             System.out.println("Mời bạn chọn");
             byte choice = InputMethods.getByte();
             switch (choice){
                 case 1:
-                    currentUserList.get(0).displayData();
+                    currentUserList.get(0).displayDataAll();
                     break;
                 case 2:
                     UserService.updateUserInformation();

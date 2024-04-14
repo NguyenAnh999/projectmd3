@@ -14,22 +14,23 @@ public class UserManage {
         do {
             String currentUserName=currentUserList.get(0).getFullName();
             System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ +");
-            System.out.printf("┃          Chào Mừng học viên %-50s ┃\n",currentUserName);
+            System.out.printf ("┃          Chào Mừng Admin %-53s ┃\n",currentUserName);
             System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-            System.out.println("┃                           1: Danh sách người dùng                              ┃");
+            System.out.println("┃          1: Danh sách người dùng                                               ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                            2: khóa/mở người dùng                               ┃");
+            System.out.println("┃          2: khóa/mở người dùng                                                 ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                            3: Tìm kiếm người dùng                              ┃");
+            System.out.println("┃          3: Tìm kiếm người dùng                                                ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                                 0: quay lại                                    ┃");
+            System.out.println("┃          0: quay lại                                                           ┃");
             System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             System.out.println("Mời bạn chọn");
 
             byte choice = InputMethods.getByte();
             switch (choice) {
                 case 1:
-                    AdminService.displayData();
+                 //  AdminService.displayData();
+                   AdminService.paginationMath();
                     break;
                 case 2:
                     AdminService.setStatusForUser();

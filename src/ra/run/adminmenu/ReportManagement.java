@@ -14,19 +14,19 @@ public class ReportManagement {
         do {
             String currentUserName=currentUserList.get(0).getFullName();
             System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ +");
-            System.out.printf("┃          Chào Mừng học viên %-50s ┃\n",currentUserName);
+            System.out.printf ("┃          Chào Mừng Admin %-53s ┃\n",currentUserName);
             System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-            System.out.println("┃                       1: thống kê danh sách người dự thi                       ┃");
+            System.out.println("┃          1: thống kê danh sách người dự thi                                    ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                         2: thống kê danh sách bài thi                          ┃");
+            System.out.println("┃          2: thống kê danh sách bài thi                                         ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                     3: thống kê điểm trung bình theo tháng                     ┃");
+            System.out.println("┃          3: thống kê điểm trung bình theo tháng                                ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                   4: top 2 đề được thi nhiều nhất theo tháng                   ┃");
+            System.out.println("┃          4: top 2 đề được thi nhiều nhất theo tháng                            ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                5: top 2 học sinh có điểm thi cao nhất theo tháng               ┃");
+            System.out.println("┃          5: top 2 học sinh có điểm thi cao nhất theo tháng                     ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                                0: quay lại                                     ┃");
+            System.out.println("┃          0: quay lại                                                           ┃");
             System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             System.out.println("Mời bạn chọn");
 
@@ -37,6 +37,7 @@ public class ReportManagement {
                     break;
                 case 2:
                     ResultService.ReportExamList();
+                    ResultService.userPointList(true);
                     break;
                 case 3:
                     ResultService.averagePointPerMonth();
@@ -48,8 +49,6 @@ public class ReportManagement {
                     ResultService.top2User();
                     break;
                 case 0:
-                    currentUserList.clear();
-                    IO_file.writeObjFromFile(currentUserList, IO_file.CURRENT_USER_PATH);
                     isExit = false;
                     break;
                 default:

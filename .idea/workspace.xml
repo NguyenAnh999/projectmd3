@@ -5,26 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18515ca1-f9bb-4cb7-a3ee-4e53cdb7c36e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ra/data/Catalogs.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/data/Resul.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/data/ResulDetail.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ra/run/adminmenu/ReportManagement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ra/business/config/IO_file.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/config/IO_file.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/CatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/CatalogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/ExamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/ExamService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/QuestionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/ResultService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/ResultService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/designimplement/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/designimplement/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Exam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Exam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Question.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/business/entity/ResultDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/ResultDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/business/entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/business/entity/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/Catalogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/Catalogs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/data/CurrentUser.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/CurrentUser.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/data/Exam.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/Exam.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/Resul.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/Resul.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/data/ResulDetail.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/ResulDetail.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/data/Users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/data/Users.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/run/Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/Management.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/run/adminmenu/AdminManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/adminmenu/AdminManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ra/run/adminmenu/ReportManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/adminmenu/ReportManagement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/run/adminmenu/UserManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/adminmenu/UserManage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/run/teachmenu/ExamManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/teachmenu/ExamManagement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ra/run/teachmenu/TeachManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ra/run/teachmenu/TeachManagement.java" afterDir="false" />
@@ -57,34 +57,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Exam.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Management.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Question.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ResultDetail.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UserManage.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Users.executor&quot;: &quot;Run&quot;,
-    &quot;Application.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/chjck/Downloads/jbcrypt-0.4.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/JavaCodeOff/project_Quizz/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Exam.executor": "Run",
+    "Application.Management.executor": "Run",
+    "Application.Question.executor": "Run",
+    "Application.RanDum.executor": "Run",
+    "Application.ResultDetail.executor": "Run",
+    "Application.UserManage.executor": "Run",
+    "Application.Users.executor": "Run",
+    "Application.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/JavaCodeOff/project_Quizz",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/JavaCodeOff/project_Quizz/src/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Application.Exam">
+}]]></component>
+  <component name="RunManager">
     <configuration name="Exam" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ra.business.entity.Exam" />
       <module name="project_Quizz" />
@@ -124,12 +125,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Users" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ra.business.entity.Users" />
+    <configuration name="RanDum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ra.business.config.RanDum" />
       <module name="project_Quizz" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ra.business.designimplement.*" />
+          <option name="PATTERN" value="ra.business.config.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -152,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.test" />
+        <item itemvalue="Application.RanDum" />
         <item itemvalue="Application.Management" />
         <item itemvalue="Application.Exam" />
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.Question" />
-        <item itemvalue="Application.Users" />
       </list>
     </recent_temporary>
   </component>
@@ -186,11 +187,34 @@
       <workItem from="1712754230397" duration="598000" />
       <workItem from="1712826535639" duration="612000" />
       <workItem from="1712883055642" duration="33873000" />
-      <workItem from="1712929861389" duration="510000" />
+      <workItem from="1712929861389" duration="890000" />
+      <workItem from="1712931965865" duration="30143000" />
+      <workItem from="1713054639593" duration="2172000" />
+      <workItem from="1713057270093" duration="16570000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ra/business/designimplement/AuthenticationService.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/ra/business/config/RanDum.java</url>
+          <line>39</line>
+          <properties class="ra.business.config.RanDum" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

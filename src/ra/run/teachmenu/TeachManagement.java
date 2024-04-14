@@ -22,13 +22,13 @@ public class TeachManagement {
             System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
             System.out.println("┃                            1: Quản lý đề thi                                   ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                           2: Quản lý báo cáo                                   ┃");
+            System.out.println("┃                            2: Quản lý báo cáo                                  ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
             System.out.println("┃                            3: Thông tin cá nhân                                ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                          4: Tìm đề theo danh mục                               ┃");
+            System.out.println("┃                            4: Tìm đề theo danh mục                             ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                               0: Đăng xuất                                     ┃");
+            System.out.println("┃                            0: Đăng xuất                                        ┃");
             System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             System.out.println("Mời bạn chọn");
             byte choice = InputMethods.getByte();
@@ -37,7 +37,7 @@ public class TeachManagement {
                     ExamManagement.examControlMenu();
                     break;
                 case 2:
-                    ResultService.userPointList();
+                    ResultService.userPointList(false);
                     break;
                 case 3:
                     UserInformation.UserInformationMenu();

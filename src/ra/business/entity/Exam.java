@@ -241,6 +241,7 @@ public class Exam implements Serializable {
             catalogsList.add(catalogs);
             listString.add(catalogs.getCatalogId());
         }
+        IO_file.writeObjFromFile(catalogsList,IO_file.CATALOGS_PATH);
         System.out.println("đã thêm danh mục mới tạo vào đề thi thành công");
         return listString;
     }
@@ -248,20 +249,28 @@ public class Exam implements Serializable {
     public void displayDataForTeach() {
         displayDataForUser();
         for (int i = 0; i < this.listQuestion.size(); i++) {
-            System.out.print("Câu " + (1 + i) + " :");
+            System.out.print("┃ Câu " + (1 + i) + " :");
             this.listQuestion.get(i).displayData();
-            System.out.println("đáp án đúng là câu thứ: "+this.listQuestion.get(i).getAnswerTrue());
-            System.out.println("\n=================================================================================================\n");
+            System.out.printf("┃ Đáp án đúng là câu thứ: %-75s┃\n",(this.listQuestion.get(i).getAnswerTrue())+1);
+            if (i==this.listQuestion.size()-1){
+                System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+
+            }else {
+            System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");}
         }
     }
     public void displayDataForUser() {
-        System.out.println("=========================================" + this.title + "==================================================");
-        System.out.println("Thời gian làm bài: " + this.duration + " phút");
-        System.out.println("Môt tả: " + this.description);
+        System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.printf ("┃                                   %-65s┃\n",this.title.toUpperCase());
+        System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+        System.out.printf("┃ Thời gian làm bài: %-4s phút %-16s                                                      ┃\n",this.duration," ");
+        System.out.printf("┃ Môt tả: %-91s┃\n", this.description);
         String teachName = userList.stream().filter(users -> users.getUserId() == this.userId).findFirst().orElse(null).getFullName();
-        System.out.println("người ra đề : " + teachName);
-        System.out.print("các danh mục: ");
-        System.out.println(idToName());
+        System.out.printf("┃ người ra đề : %-85s┃\n",teachName);
+        System.out.print("┃ các danh mục: ");
+        System.out.printf("%-85s┃\n",idToName());
+        System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+
     }
 
     public List<String> idToName() {

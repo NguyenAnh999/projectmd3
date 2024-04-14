@@ -20,8 +20,6 @@ public class AdminManagement {
             System.out.println("┃                            2: báo cáo thống kê                                 ┃");
             System.out.println("┃--------------------------------------------------------------------------------┃");
             System.out.println("┃                              3: đăng xuất                                      ┃");
-            System.out.println("┃--------------------------------------------------------------------------------┃");
-            System.out.println("┃                               0: quay lại                                      ┃");
             System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             System.out.println("Mời bạn chọn");
             byte choice = InputMethods.getByte();

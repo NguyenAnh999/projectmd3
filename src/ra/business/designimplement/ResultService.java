@@ -1,5 +1,6 @@
 package ra.business.designimplement;
 
+import ra.business.config.Enum;
 import ra.business.config.IO_file;
 import ra.business.config.InputMethods;
 import ra.business.entity.Exam;
@@ -25,21 +26,27 @@ public class ResultService {
     }
 
     public static void ReportExamList() {
-        System.out.printf("hiện tại đang có tổng cộng %d bài thi dược tạo trên wep", examList.size());
+        System.out.printf("hiện tại đang có tổng cộng %d bài thi dược tạo trên wep\n", examList.size());
     }
 
     public static void ReportUserQuantity() {
-        for (Users users : userList) {
-            long count = resultList.stream().filter(result -> result.getUserId() == users.getUserId()).count();
+        if (isNotResult()) {
+            for (Users users : userList) {
+                if (users.getRole() == Enum.ROLE_USER) {
+                    long count = resultList.stream().filter(result -> result.getUserId() == users.getUserId()).count();
 
-            if (count > 0) {
-                System.out.printf("thí sinh %s đã thi %d lần" + users.getFullName(), count);
-                System.out.println("=======================================================");
+                    if (count > 0) {
+                        System.out.printf("thí sinh %s đã thi %d lần\n", users.getFullName(), count);
+                        System.out.println("=======================================================");
 
-            } else {
-                System.out.printf("thí sinh %s chưa có lần dự thi nào" + users.getFullName());
-                System.out.println("=======================================================");
+                    } else {
+                        System.out.printf("thí sinh %s chưa có lần dự thi nào\n", users.getFullName());
+                        System.out.println("=======================================================");
+                    }
+                }
             }
+        } else {
+            System.out.println("chưa có dữ liệu nào để thống kê");
         }
     }
 
@@ -60,22 +67,25 @@ public class ResultService {
         if (totalPointForMont == 0) {
             System.out.println("tháng bạn muốn xem không có người thi");
         } else {
-            System.out.printf("điêm thi trung bình học sinh tháng %d là %f diểm", month, totalPointForMont);
+            System.out.printf("điêm thi trung bình học sinh tháng %d là %f diểm\n", month, totalPointForMont);
         }
     }
 
     public static void top2User() {
+        // Nhập vào tháng để xem top 2 học sinh có điểm trung bình cao nhất
         System.out.println("mời bạn nhập vào tháng xem top 2 học sinh có điểm trung bình cao nhất");
         byte month = InputMethods.getByte();
         if (month > 12 || month < 1) {
             System.out.println("tháng bạn nhâp không hợp lệ");
         } else {
+            // Lọc danh sách các kỳ thi trong tháng được chọn
             List<Result> examsCurrent = resultList.stream().filter(exam -> exam.getCreatedDate().getMonthValue() == month).toList();
             if (examsCurrent.isEmpty()) {
                 System.out.println("tháng này không có ai tham gia thi");
             } else {
                 double totalPoint;
                 Map<Users, Double> map = new HashMap<>();
+                // Tính điểm trung bình cho từng thí sinh
                 for (Users user : userList) {
                     OptionalDouble check = examsCurrent.stream().filter(exam -> exam.getUserId() == user.getUserId()).mapToInt(Result::getTotalPoint).average();
                     if (check.isPresent()) {
@@ -86,22 +96,26 @@ public class ResultService {
                     map.put(user, totalPoint);
                 }
 
-
+                // Lấy ra top 2 học sinh có điểm cao nhất
                 Map<Users, Double> topTwo = map.entrySet()
-                        .stream()
-                        .sorted(Map.Entry.<Users, Double>comparingByValue().reversed())
+                        .stream().sorted(Map.Entry.<Users, Double>comparingByValue().reversed())
                         .limit(2)
-                        .collect(Collectors.toMap(
-                                Map.Entry::getKey,
-                                Map.Entry::getValue,
-                                (e1, e2) -> e1,
-                                HashMap::new));
-                System.out.println("top 2 học sinh có điẻm cao nhất tháng " + month);
-                for (Map.Entry<Users, Double> userInTop2 : topTwo.entrySet()) {
-                    System.out.printf("thí sinh: %s  | điểm trung bình: %f\n", userInTop2.getKey().getFullName(), userInTop2.getValue());
-                    System.out.println("=====================================================================");
-                }
+                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, HashMap::new));
 
+                // In ra top 2 học sinh có điểm cao nhất
+
+                System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ ");
+                System.out.printf ("┃Top 2 học sinh có điểm cao nhất tháng %-26s┃\n", + month);
+                System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+                System.out.printf ("┃ %-30s ┃ %-14s \n", "Thí sinh", "Điểm trung bình               ┃");
+                System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+                for (Map.Entry<Users, Double> userInTop2 : topTwo.entrySet()) {
+                    String fullName = userInTop2.getKey().getFullName();
+                    String averageScore = String.format("%.2f", userInTop2.getValue());
+                    System.out.printf ("┃ %-30s ┃ %-30s┃\n", fullName, averageScore);
+                    System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+
+                }
             }
         }
 
@@ -126,15 +140,10 @@ public class ResultService {
 //        sorted(Map.Entry.comparingByValue().reversed()) sắp xếp các entry theo giá trị giảm dần.
 //                limit(2) giới hạn kết quả đầu ra chỉ gồm hai entry đầu tiên sau khi sắp xếp.
 //        collect(Collectors.toMap(...)) thu thập hai entry này vào một HashMap mới.
-                Map<Exam, Integer> topTwo = map.entrySet()
-                        .stream()
+                Map<Exam, Integer> topTwo = map.entrySet().stream()
                         .sorted(Map.Entry.<Exam, Integer>comparingByValue().reversed())
                         .limit(2)
-                        .collect(Collectors.toMap(
-                                Map.Entry::getKey,
-                                Map.Entry::getValue,
-                                (e1, e2) -> e1,
-                                HashMap::new));
+                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, HashMap::new));
                 System.out.println("top 2 de thi được lựa chon nhiều nhất tháng " + month);
                 for (Map.Entry<Exam, Integer> examIntegerEntry : topTwo.entrySet()) {
                     System.out.printf("Tiêu đề: %s  | số lân được chọn: %s\n", examIntegerEntry.getKey().getTitle(), examIntegerEntry.getValue());
@@ -142,19 +151,29 @@ public class ResultService {
                 }
             }
         }
-
-
     }
 
 
-    public static void userPointList() {
-        if (resultList.stream().anyMatch(result -> result.getUserId() == currentUserList.get(0).getUserId())) {
-            List<Result> resultListForTeach = resultList.stream().filter(result -> result.getUserId() == currentUserList.get(0).getUserId()).toList();
-            resultListForTeach.forEach(Result::displayData);
-        }else {
-            System.out.println("chưa có thí sinh nào tham gia thi bài của bạn");
+    public static void userPointList(boolean isAdmin) {
+        List<Exam> currentExam;
+
+        if (isAdmin) {
+            currentExam = examList;
+        } else {
+            currentExam = examList.stream().filter(exam -> exam.getUserId() == currentUserList.get(0).getUserId()).toList();
+        }
+        for (int i = 0; i < currentExam.size(); i++) {
+            int x = i;
+            resultList.stream().filter(result -> result.getExamId() == currentExam.get(x).getExamId()).forEach(Result::displayData);
         }
     }
 
+    public static boolean isNotResult() {
+        if (resultList.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }

@@ -1,6 +1,8 @@
 package ra.business.entity;
 
-public class ResultDetail {
+import java.io.Serializable;
+
+public class ResultDetail implements Serializable {
     private int resultId;
     private int indexQuestion;
     private int indexChoice;
@@ -47,12 +49,8 @@ public class ResultDetail {
     public void setCheck(boolean check) {
         this.check = check;
     }
-    public void displayData(){
-//        this.resultId ;
-//        this.indexQuestion ;
-//        this.indexChoice;
-//        this.check;
 
+    public void displayData() {
     }
 
 }

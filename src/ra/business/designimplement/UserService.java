@@ -1,10 +1,14 @@
 package ra.business.designimplement;
 
+import org.mindrot.jbcrypt.BCrypt;
+import org.w3c.dom.ls.LSOutput;
 import ra.business.config.IO_file;
 import ra.business.config.InputMethods;
 import ra.business.entity.*;
 
+import javax.crypto.spec.PSource;
 import java.text.AttributedString;
+import java.util.List;
 
 import static ra.business.designimplement.AuthenticationService.currentUserList;
 import static ra.business.designimplement.AuthenticationService.userList;
@@ -31,19 +35,25 @@ public class UserService {
             displayExamList();
             System.out.println("mời bạn chọn đề theo số");
             int choice = InputMethods.getInteger();
-            examList.get(choice - 1).displayDataForUser();
-            System.out.println("============================== Bắt đầu thi ====================================");
-            Result result = new Result();
-            result.inputData(examList.get(choice - 1).getExamId());
-            takeAnExamDetail(choice, result.getResultId(), result);
-            result.setTotalPoint(
-                    examList.get(choice - 1).getListQuestion().size() / 100 * result.getTotalPoint()
-            );
-            resultList.add(result);
-            IO_file.writeObjFromFile(resultList, IO_file.RESUL_PATH);
-            System.out.println("kết thúc bài thi, bạn có thể xem lại điểm của mình trong phần quản lý");
+            if (examList.get(choice - 1).isStatus()) {
+
+                examList.get(choice - 1).displayDataForUser();
+                System.out.println("============================== Bắt đầu thi ====================================");
+                Result result = new Result();
+                result.inputData(examList.get(choice - 1).getExamId());
+                takeAnExamDetail(choice, result.getResultId(), result);
+                result.setTotalPoint(
+                        result.getTotalPoint() * 100 / examList.get(choice - 1).getListQuestion().size()
+                );
+                resultList.add(result);
+                IO_file.writeObjFromFile(resultList, IO_file.RESUL_PATH);
+                System.out.println("kết thúc bài thi, bạn có thể xem lại điểm của mình trong phần quản lý");
+            } else {
+                System.out.println("đề bạn chọn hiện đang được chỉnh sửa, mời bạn quay lại sau");
+            }
         }
     }
+
     public static void takeAnExamDetail(int choice, int resultId, Result result) {
         for (int i = 0; i < examList.get(choice - 1).getListQuestion().size(); i++) {
 
@@ -63,7 +73,7 @@ public class UserService {
             }
             ResultDetail resultDetail = new ResultDetail(resultId, i, choiceIndexAnswer, checkAnswer);
             resultDetailList.add(resultDetail);
-            IO_file.writeObjFromFile(resultDetailList,IO_file.RESUL_DETAIL_PATH);
+            IO_file.writeObjFromFile(resultDetailList, IO_file.RESUL_DETAIL_PATH);
             System.out.println("\n=================================================================================================\n");
         }
     }
@@ -82,16 +92,17 @@ public class UserService {
     }
 
     public static void finExamByName() {
-        if (examList.isEmpty()){
+        if (examList.isEmpty()) {
             System.out.println("hiện tại chưa có đề thi nào");
-        }{
-        System.out.println("mời bạn nhập vào tên đề thi muốn tìm");
-        String examName = InputMethods.getString();
-        if (examList.stream().anyMatch(exam -> exam.getTitle().contains(examName))) {
-            examList.stream().filter(exam -> exam.getTitle().contains(examName)).forEach(UserService::displayExamListOfUser);
-        } else {
-            System.out.println("không tìm thấy đề nào như bạn đã tìm");
         }
+        {
+            System.out.println("mời bạn nhập vào tên đề thi muốn tìm");
+            String examName = InputMethods.getString();
+            if (examList.stream().anyMatch(exam -> exam.getTitle().contains(examName))) {
+                examList.stream().filter(exam -> exam.getTitle().contains(examName)).forEach(UserService::displayExamListOfUser);
+            } else {
+                System.out.println("không tìm thấy đề nào như bạn đã tìm");
+            }
         }
     }
 
@@ -118,7 +129,7 @@ public class UserService {
     public static void updatePassword() {
         int updatePasswordID = currentUserList.get(0).getUserId();
         System.out.println("mời bạn nhập vào mật khẩu mới");
-        finByID(updatePasswordID).setPassword( finByID(updatePasswordID).getInputPassword());
+        finByID(updatePasswordID).setPassword(finByID(updatePasswordID).getInputPassword());
         IO_file.writeObjFromFile(userList, IO_file.USER_PATH);
         System.out.println("đổi mật khẩu thành công");
     }
@@ -142,10 +153,12 @@ public class UserService {
                 case 1:
                     System.out.println("mời bạn nhập họ mới");
                     finByID(updateID).setFirstName(InputMethods.getString());
+                    finByID(updateID).setFullName(finByID(updateID).getInputFullName());
                     break;
                 case 2:
                     System.out.println("mời bạn nhập tên mới");
                     finByID(updateID).setLastName(InputMethods.getString());
+                    finByID(updateID).setFullName(finByID(updateID).getInputFullName());
                     break;
                 case 3:
                     updatePassword();
@@ -160,7 +173,7 @@ public class UserService {
                     finByID(updateID).setAddress(finByID(updateID).getInputAddress());
                     break;
                 case 0:
-                    IO_file.writeObjFromFile(userList,IO_file.USER_PATH);
+                    IO_file.writeObjFromFile(userList, IO_file.USER_PATH);
                     isExit = false;
                     break;
                 default:
@@ -170,12 +183,61 @@ public class UserService {
         }
     }
 
+    public static void studentOfResultList() {
+        if (resultList.stream().anyMatch(result -> result.getUserId() == currentUserList.get(0).getUserId())) {
+           List<Result> resultsCurrentUser = resultList.stream().filter(results -> results.getUserId() == currentUserList.get(0).getUserId()).toList();
+
+            int count = 1;
+            for (Result result : resultsCurrentUser) {
+                System.out.printf("┌──────────────────────────────────────────────────────┐\n" +
+                                "│                  Bài thi số:  %-10s             │\n" , count);
+                result.displayData();
+                count++;
+            }
+            System.out.println("bạn có thể nhập số thứ tự bài thi để xem chi tiết hoặc chon 0 đêt thoát");
+            while (true){
+                System.out.println("mời bạn chọn bài thi muốn xem tri tiết");
+                System.out.print("Bài số: ");
+                int choice = InputMethods.getInteger();
+                if (choice>=count){
+                    System.out.println("lựa chọn không chính xác");
+
+                }else if (choice<1){
+                    break;
+                }else {
+                    resultsCurrentUser.get(choice-1).displayDataAll();
+                }
+            }
+        } else {
+            System.out.println("lịch sử thi rỗng");
+        }
+    }
 
     private static Users finByID(int Id) {
         return userList.stream().filter(users -> users.getUserId() == Id).findFirst().orElse(null);
     }
 
+    public static void getPasswordByEmailEndPhone() {
+        System.out.println("mời bạn nhập vào emai và số điện thoại của mình");
+        System.out.print("Email: ");
+        String email = InputMethods.getString();
+        System.out.println();
+        System.out.print("Số điện thoại: ");
+        String phoneNum = InputMethods.getString();
+        Users acc = userList.stream().filter(users -> users.getEmail().equals(email))
+                .filter(users -> users.getPhoneNumber().equals(phoneNum))
+                .findFirst().orElse(null);
+
+        if (acc == null) {
+            System.out.println("thông tin Email hoặc sdt không đúng");
+        } else {
+            System.out.println("Xin chào " + acc.getFullName().toUpperCase());
+            System.out.println("Đây là tài khoản của bạn: " + acc.getUserName());
+            System.out.println("Mời bạn nhập mật khẩu mới");
+            acc.setPassword(BCrypt.hashpw(acc.getInputPassword(), BCrypt.gensalt(5)));
+            IO_file.writeObjFromFile(userList, IO_file.USER_PATH);
+            System.out.println("thay đổi mật khẩu thành công");
+        }
+    }
 
 }
-
-
