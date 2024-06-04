@@ -113,9 +113,19 @@ public class UserService {
         if (catalog == null) {
             System.out.println("không tìm thấy bài thi nào theo yêu cầu");
         } else {
+            boolean check = true;
             String catalogId = catalog.getCatalogId();
-            examList.stream().filter(exam -> exam.getCatalogId().stream().filter(c -> c.contains(catalogId)).isParallel())
-                    .toList().forEach(UserService::displayExamListOfUser);
+            for (Exam exam : examList) {
+                for (String s : exam.getCatalogId()) {
+                    if (s.contains(catalogId)) {
+                        UserService.displayExamListOfUser(exam);
+                        check = false;
+                    }
+                }
+            }
+            if (!check) {
+                System.out.println("khong tim thay");
+            }
         }
 
     }
@@ -127,13 +137,38 @@ public class UserService {
 
 
     public static void updatePassword() {
-        int updatePasswordID = currentUserList.get(0).getUserId();
-        System.out.println("mời bạn nhập vào mật khẩu mới");
-        finByID(updatePasswordID).setPassword(finByID(updatePasswordID).getInputPassword());
-        IO_file.writeObjFromFile(userList, IO_file.USER_PATH);
-        System.out.println("đổi mật khẩu thành công");
+        int count=0;
+        while (true) {
+            int updatePasswordID = currentUserList.get(0).getUserId();
+            System.out.println("moi ban nhap vao mat khau cu");
+            String oldPassword = InputMethods.getString();
+            boolean checkPass = BCrypt.checkpw(oldPassword, getUserFromUsername(currentUserList.get(0).getUserName()).getPassword());
+            if (!checkPass) {
+                System.out.println("mat khau cu khong chinh xac, moi nhap lai");
+               count= count+1;
+                if(count==3){
+                    System.err.println("tai khoan cua ban da bi khoa do nhap sai mat khau qua 3 lan");
+                    userList.stream().filter(user -> user.getUserName().equals(currentUserList.get(0).getUserName())).findFirst().orElse(null)
+                            .setStatus(false);
+                    currentUserList.clear();
+                    IO_file.writeObjFromFile(currentUserList,IO_file.CURRENT_USER_PATH);
+                    IO_file.writeObjFromFile(userList,IO_file.USER_PATH);
+
+                    System.exit(0);
+                }
+                continue;
+            }
+            System.out.println("mời bạn nhập vào mật khẩu mới");
+            finByID(updatePasswordID).setPassword(finByID(updatePasswordID).getInputPassword());
+            IO_file.writeObjFromFile(userList, IO_file.USER_PATH);
+            System.out.println("đổi mật khẩu thành công");
+            break;
+        }
     }
 
+    private static Users getUserFromUsername(String username) {
+        return userList.stream().filter(user -> user.getUserName().equals(username)).findFirst().orElse(null);
+    }
 
     public static void updateUserInformation() {
         int updateID = currentUserList.get(0).getUserId();
@@ -185,27 +220,27 @@ public class UserService {
 
     public static void studentOfResultList() {
         if (resultList.stream().anyMatch(result -> result.getUserId() == currentUserList.get(0).getUserId())) {
-           List<Result> resultsCurrentUser = resultList.stream().filter(results -> results.getUserId() == currentUserList.get(0).getUserId()).toList();
+            List<Result> resultsCurrentUser = resultList.stream().filter(results -> results.getUserId() == currentUserList.get(0).getUserId()).toList();
 
             int count = 1;
             for (Result result : resultsCurrentUser) {
                 System.out.printf("┌──────────────────────────────────────────────────────┐\n" +
-                                "│                  Bài thi số:  %-10s             │\n" , count);
+                        "│                  Bài thi số:  %-10s             │\n", count);
                 result.displayData();
                 count++;
             }
             System.out.println("bạn có thể nhập số thứ tự bài thi để xem chi tiết hoặc chon 0 đêt thoát");
-            while (true){
+            while (true) {
                 System.out.println("mời bạn chọn bài thi muốn xem tri tiết");
                 System.out.print("Bài số: ");
                 int choice = InputMethods.getInteger();
-                if (choice>=count){
+                if (choice >= count) {
                     System.out.println("lựa chọn không chính xác");
 
-                }else if (choice<1){
+                } else if (choice < 1) {
                     break;
-                }else {
-                    resultsCurrentUser.get(choice-1).displayDataAll();
+                } else {
+                    resultsCurrentUser.get(choice - 1).displayDataAll();
                 }
             }
         } else {
@@ -239,5 +274,8 @@ public class UserService {
             System.out.println("thay đổi mật khẩu thành công");
         }
     }
+
+
+
 
 }

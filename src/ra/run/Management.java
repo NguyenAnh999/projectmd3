@@ -19,6 +19,10 @@ public class Management {
 
     public static void main(String[] args) {
         if (!currentUserList.isEmpty()) {
+            if (!currentUserList.get(0).isStatus()){
+                System.out.println("tai khaon cua ban da bi khoa lien he voi chung toi(0987654321)");
+                System.exit(0);
+            }
             if (currentUserList.get(0).getRole().equals(Enum.ROLE_USER)) {
                 userMenu();
             } else if (currentUserList.get(0).getRole().equals(Enum.ROLE_TEACH)) {

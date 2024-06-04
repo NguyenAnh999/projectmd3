@@ -48,7 +48,7 @@ public class AuthenticationService implements IAuthentication {
                 boolean checkLogin = BCrypt.checkpw(password, getUserFromUsername(userName).getPassword());
                 if (checkLogin) {
                     if(!getUserFromUsername(userName).isStatus()){
-                        System.err.println("tài khoản đã bị khóa");
+                        System.out.println("tài khoản đã bị khóa");
                         break;
                     }
                     currentUserList.add(getUserFromUsername(userName));

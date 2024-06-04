@@ -67,7 +67,7 @@ public class ResultService {
         if (totalPointForMont == 0) {
             System.out.println("tháng bạn muốn xem không có người thi");
         } else {
-            System.out.printf("điêm thi trung bình học sinh tháng %d là %f diểm\n", month, totalPointForMont);
+            System.out.printf("điêm thi trung bình học sinh tháng %d là %s diểm\n", month, totalPointForMont);
         }
     }
 

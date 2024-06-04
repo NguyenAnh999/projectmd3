@@ -1,7 +1,9 @@
 package ra.business.designimplement;
 
+import ra.business.config.Enum;
 import ra.business.config.IO_file;
 import ra.business.config.InputMethods;
+import ra.business.design.IAdmin;
 import ra.business.entity.Users;
 
 import javax.swing.*;
@@ -15,8 +17,7 @@ import static ra.business.config.Enum.ROLE_ADMIN;
 import static ra.business.config.Enum.ROLE_USER;
 import static ra.business.designimplement.AuthenticationService.userList;
 
-public class AdminService {
-    public static final int ADMIN_CODE = 123456789;
+public class AdminService implements IAdmin {
 
     public static void setStatusForUser() {
         displayData();
@@ -34,17 +35,21 @@ public class AdminService {
             if (updateStatusID > userList.size()) {
                 System.out.println("lựa chọn không chính xác");
             } else {
+                if (userList.get(updateStatusID - 1).getRole().equals(Enum.ROLE_ADMIN)){
+                    System.out.println("ban khong the khoa 1 Admin khac");
+                    break;
+                }
+
                 if (userList.get(updateStatusID - 1).isStatus()) {
                     userList.get(updateStatusID - 1).setStatus(false);
                     IO_file.writeObjFromFile(userList, IO_file.USER_PATH);
                     System.out.println("bạn đã khóa tài khoản của " + userList.get(updateStatusID - 1).getFullName() + " thành công ");
-                    break;
                 } else {
                     userList.get(updateStatusID - 1).setStatus(true);
                     System.out.println("bạn đã mở khóa tài khoản của " + userList.get(updateStatusID - 1).getFullName() + " thành công ");
                     IO_file.writeObjFromFile(userList, IO_file.USER_PATH);
-                    break;
                 }
+                break;
             }
         }
     }
@@ -57,7 +62,7 @@ public class AdminService {
         userList.stream().limit(4).toList().forEach(Users::displayData);
 
         System.out.println("                          ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.printf("                          ┃ trang  %-3s/ %-18s ┃\n", choice, pageQuantity);
+         System.out.printf("                          ┃ trang  %-3s/ %-18s ┃\n", choice, pageQuantity);
         System.out.println("                          ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 
 
